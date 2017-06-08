@@ -557,7 +557,7 @@ select:focus {
 @media (min-width: 900px) {
   .header-tag-line {
     display: block;
-    width: 41%;
+    width: 32%;
     padding: 0.5rem; }
   .header-tag-line h1 {
     font-size: 1.2rem;
@@ -594,7 +594,7 @@ select:focus {
 @media (min-width: 900px) {
   .main-nav {
     display: block;
-    width: 53%;
+    width: 60%;
     height: inherit;
     transform: translateX(0);
     position: absolute;
@@ -652,7 +652,7 @@ select:focus {
   padding: 1rem 0; }
 
 .navbar-nav li a {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem;
   text-decoration: none;
   font-size: 1.2rem; }
 
@@ -662,7 +662,7 @@ select:focus {
 
 @media (min-width: 900px) {
   .navbar-nav li a {
-    font-size: 1.0rem;
+    font-size: 0.9rem;
     transition: all 0.5s; } }
 
 @media (min-width: 900px) {

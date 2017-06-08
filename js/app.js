@@ -1,12 +1,10 @@
 // +++ +++ API URL and API KEY +++ +++
 // API KEY = 64b0f57dd2e44132b7f1f45b095747ec
-//techArticles = 'https://newsapi.org/v1/sources?category=technology',
-//articlesUrl = 'https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=64b0f57dd2e44132b7f1f45b095747ec';
 var techArtId = [],
 	bizArtId = [],
 	sciArtId = [],
 	spoArtId = [],
-// +++ +++ +++ ++++ wybór selectów +++ +++ +++
+// +++ +++ +++ ++++ Sources config +++ +++ +++
 	newsSources = [
 		{
 			category: 'technology',
@@ -37,11 +35,8 @@ var techArtId = [],
 			firsLoadInsert: '#section-spo'
 		}
 	];
-// +++ funkcja odpowiedzialna za wywołanie przeładowania artykułów w aside.
-	function timeReload() {
-		setInterval(function(){printData();}, 5000);
-	}
-// +++ Promis dla tech articles
+
+// +++ Promise for tech articles
 	function getTechArticles() {
 		var promisTechArticles = new Promise(function(resolve, reject){
 			$.ajax({
@@ -56,7 +51,7 @@ var techArtId = [],
 		});
 		return promisTechArticles;
 	}
-// +++ Promis dla biz articles
+// +++ Promise for biz articles
 	function getBizArticles() {
 		var promisBizArticles = new Promise(function(resolve, reject){
 			$.ajax({
@@ -71,7 +66,7 @@ var techArtId = [],
 		});
 		return promisBizArticles;
 	}
-// +++ Promis dla Sci articles
+// +++ Promise for Sci articles
 	function getSciArticles() {
 		var promisSciArticles = new Promise(function(resolve, reject){
 			$.ajax({
@@ -86,7 +81,7 @@ var techArtId = [],
 		});
 		return promisSciArticles;
 	}
-// +++ Promis dla Spo articles
+// +++ Promise for Spo articles
 	function getSpoArticles() {
 		var promisSpoArticles = new Promise(function(resolve, reject){
 			$.ajax({
@@ -101,7 +96,7 @@ var techArtId = [],
 		});
 		return promisSpoArticles;
 	}
-// +++ pobieranie tech data
+// +++ getting tech data
 	function getTechData(element){
 		$.ajax({
 			url: `https://newsapi.org/v1/articles?source=${element}&sortBy=top&apiKey=64b0f57dd2e44132b7f1f45b095747ec`,
@@ -111,7 +106,7 @@ var techArtId = [],
 			insertTechArticle(response);
 		});
 	}
-// +++ pobieranie biz data
+// +++ getting biz data
 	function getBizData(element){
 		$.ajax({
 			url: `https://newsapi.org/v1/articles?source=${element}&sortBy=top&apiKey=64b0f57dd2e44132b7f1f45b095747ec`,
@@ -121,7 +116,7 @@ var techArtId = [],
 			insertBizArticle(response);
 		});
 	}
-// +++ pobieranie Sci data
+// +++ getting Sci data
 	function getSciData(element){
 		$.ajax({
 			url: `https://newsapi.org/v1/articles?source=${element}&sortBy=top&apiKey=64b0f57dd2e44132b7f1f45b095747ec`,
@@ -131,7 +126,7 @@ var techArtId = [],
 			insertSciArticle(response);
 		});
 	}
-// +++ pobieranie spo data
+// +++ getting spo data
 	function getSpoData(element){
 		$.ajax({
 			url: `https://newsapi.org/v1/articles?source=${element}&sortBy=top&apiKey=64b0f57dd2e44132b7f1f45b095747ec`,
@@ -141,7 +136,7 @@ var techArtId = [],
 			insertSpoArticle(response);
 		});
 	}
-// +++ pobieranie losowych artykułów Tech data
+// +++ getting losowych artykułów Tech data
 	function printTechData(data) {
 		var d = getTechArticles(),
 			sideTechArt = $('#tech-side-art');
@@ -155,7 +150,7 @@ var techArtId = [],
 				getTechData(techArtId[0]);
 		});
 	}
-// +++ pobieranie losowych artykułów Biz data
+// +++ getting losowych artykułów Biz data
 	function printBizData(data) {
 		var d = getBizArticles(),
 			sideBizArt = $('#biz-side-art');
@@ -164,7 +159,6 @@ var techArtId = [],
 				bizArtId.push(val.id);
 		});
 		}).then(function() {
-			//var r = Math.floor((Math.random() * 10 ) + 1);
 				sideBizArt.empty();
 				getBizData(bizArtId[0]);
 		});
@@ -197,7 +191,7 @@ var techArtId = [],
 				getSpoData(spoArtId[0]);
 		});
 	}	
-// +++ wstawianie Tech data
+// +++ inserting Tech data
 	function insertTechArticle(response) {
 		var sideTechArt = $(newsSources[0].asideArtId),
 			sideTechLink = $(`<a class="aside-article-link" href="${response.articles[0].url}">`),
@@ -210,7 +204,7 @@ var techArtId = [],
 			sideTechDesc.appendTo(sideTechLink);
 			sideTechLink.appendTo(sideTechArt);
 	}
-// +++ wstawianie Biz data
+// +++ inserting Biz data
 	function insertBizArticle(response) {
 		var sideTechArt = $(newsSources[1].asideArtId),
 			sideTechLink = $(`<a class="aside-article-link" href="${response.articles[0].url}">`),
@@ -223,7 +217,7 @@ var techArtId = [],
 			sideTechDesc.appendTo(sideTechLink);
 			sideTechLink.appendTo(sideTechArt);
 	}
-// +++ wstawianie Sci data
+// +++ inserting Sci data
 	function insertSciArticle(response) {
 		var sideTechArt = $(newsSources[2].asideArtId),
 			sideTechLink = $(`<a class="aside-article-link" href="${response.articles[0].url}">`),
@@ -236,7 +230,7 @@ var techArtId = [],
 			sideTechDesc.appendTo(sideTechLink);
 			sideTechLink.appendTo(sideTechArt);
 	}
-// +++ wstawianie spo data
+// +++ inserting spo data
 	function insertSpoArticle(response) {
 		var sideTechArt = $(newsSources[3].asideArtId),
 			sideTechLink = $(`<a class="aside-article-link" href="${response.articles[0].url}">`),
@@ -249,7 +243,7 @@ var techArtId = [],
 			sideTechDesc.appendTo(sideTechLink);
 			sideTechLink.appendTo(sideTechArt);
 	}		
-// +++ Zapytanie w pętli pobierające listę źródeł dla artykułów
+// +++ getting sources of articles to select
 	function getSources() {
 		newsSources.forEach(function(index, value) {
 			$.ajax({
@@ -263,7 +257,7 @@ var techArtId = [],
 			});
 		});
 	}
-// +++ Wczytytanie źródeł do selectów z wyborem źródła
+// +++ insertin data to select
 	function loadDataToSelect(response, selectId) {
 		var techSelect = $(`${selectId}`),
 			option = $(`${selectId}`).children();
@@ -275,7 +269,7 @@ var techArtId = [],
 				.insertAfter(option);
 		});
 	}
-// +++ Zapytanie pobierające artykuły z wybranego źródła
+// +++ getting data from selected sources
 	function getSelSourceArt(selectedSource, ele) {
 		$.ajax({
 			url: `https://newsapi.org/v1/articles?source=${selectedSource}&sortBy=top&apiKey=64b0f57dd2e44132b7f1f45b095747ec`,
@@ -287,7 +281,7 @@ var techArtId = [],
 			console.log(error);
 		});
 	}
-// +++ Wyświetlanie artykułów z wybranego źródła
+// +++ inserting articles to page
 	function showSelectedSource(response, ele) {
 		if(response.articles.length > 3) {
 			response.articles.forEach( function(element, index) {
@@ -298,10 +292,12 @@ var techArtId = [],
 				articleTitle = $(`<div class="article-title"><h1>${element.title}</h1></div>`),
 				aritcleDesc = $(`<div class="article-desc"><p>${element.description}</p></div>`),
 				articleAuthor = $(`<div class="article-aut"></div>`),
-				date = element.publishedAt,
-				articleDate = date.substr(0, 10),
+				articleDate = "",
 				articleAuthorAndDate = $(`<p>${element.author}</p><p>${articleDate}</p>`);
-			
+				
+				if(!element.publishedAt == null) {
+					articleDate = element.published.substr(0, 10);
+				}
 					articleImg.appendTo(linkToArticle);
 					articleTitle.appendTo(linkToArticle);
 					aritcleDesc.appendTo(linkToArticle);
@@ -313,7 +309,7 @@ var techArtId = [],
 			});
 		}
 	}
-// +++ Pierwsze ładowanie artykułów
+// +++ putting som stuff on start of page
 	function firstLoad() {
 		newsSources.forEach(function(element, index) {
 			getSelSourceArt(element.dafaultLoad, element.firsLoadInsert);
@@ -334,7 +330,7 @@ $(document).scroll(function() {
 		menu = $('.header');
 	fixedMenu(menu, top);
 });
-
+// +++ DOM +++
 $(function(){
 	var footerDate = $('#f-date'),
 		actualYear = new Date(),
@@ -344,17 +340,17 @@ $(function(){
 		hamburgers = $('.mob-nav-1, .mob-nav-2, .mob-nav-3'),
 		mainNavigation = $('.main-nav'),
 		navLinks = $('.navbar-nav').find('a'),
-		switchBtn = $('a[href="direction"]'),
+		switchBtn = $('a[href=""]'),
 		body = $('body');
-// +++ Footer - aktualny rok
+// +++ Footer - get year
 	footerDate.text(actualYear.getFullYear());
-// +++ Płynne przewijanie linków
+// +++ smoth scrolling
 	links.on('click', function(e) {
 		e.preventDefault();
 		var linkAdr = $(this.getAttribute('href'));
 		doc.animate({scrollTop: linkAdr.offset().top}, 1000);
 	});
-// +++ wywołąnie funkcji pobierającej listy źródeł
+// +++ for selecting sources of articles
 	var select = $('section').find('select');
 	select.each(function(index, element) {
 		$(this).on('change', function(event) {
@@ -364,7 +360,7 @@ $(function(){
 			getSelSourceArt(selectedSource, toInsert);
 		});
 	});
-// +++ mobilna navigacja 
+// +++ mob nav
 	mobBtn.on('click', function() {
 		hamburgers.toggleClass('animate');
 		mainNavigation.toggleClass('show-nav');
@@ -373,13 +369,13 @@ $(function(){
 		hamburgers.toggleClass('animate');
 		mainNavigation.toggleClass('show-nav');
 	});
-// +++ przełącznie na rtl
+// +++ switching ltr - rtl
 	switchBtn.click(function(event) {
 		event.preventDefault();
-		if(!body.hasClass('rtl-direction')){
+		if(!body.hasClass('rtl-direction') || body.hasClass('ltr-direction')) {
 			body.addClass('rtl-direction')
-				.find('h1').css('unicode-bidi', 'bidi-override')
-				.removeClass('ltr-direction');
+				.find('h1, h2, p').css('unicode-bidi', 'bidi-override');
+			body.removeClass('ltr-direction');
 			switchBtn.text('Przełącz na ltr');
 		} else {
 			body.removeClass('rtl-direction')
@@ -387,7 +383,7 @@ $(function(){
 			switchBtn.text('Przełącz na rtl');
 		}
 	});
-// +++ wywołanie funkcji do API
+// +++ functions for API
 	getSources();
 	firstLoad();
 	printTechData();
