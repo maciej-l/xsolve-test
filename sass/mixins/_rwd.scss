@@ -1,0 +1,35 @@
+@mixin for-phone-only-landscape {
+	@media (max-width: map-get($resolutions, phone)) and (orientation: landscape) {
+		@content;
+	}
+}
+@mixin for-tablet-portrait {
+	@media (min-width: map-get($resolutions, tablet-portrait)) {
+		@content;
+	}
+}
+@mixin for-tablet-landscape {
+	@media (min-width: map-get($resolutions, tablet-landscape)) {
+		@content;
+	}
+}
+@mixin for-lg-tablet {
+	@media (min-width: map-get($resolutions, lg-tablet)) {
+		@content;
+	}
+}
+@mixin for-sm-desktop {
+	@media (min-width: map-get($resolutions, sm-desktop)) {
+		@content;
+	}
+}
+@mixin for-desktop {
+	@media (min-width: map-get($resolutions, desktop)) {
+		@content;
+	}
+}
+@mixin for-xl-desktop {
+	@media (min-width: map-get($resolutions, xl)) {
+		@content;
+	}
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto+Slab&amp;subset=latin-ext" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<title>Xsolve Test | Maciej Lehrer</title>
+	</head>
+	<body id="top">
+		<header class="header">
+			<div class="header-container">
+				<div class="container">
+					<div class="row">
+						<div class="header-logo">
+							<img src="img/world-news.svg">
+						</div>
+						<div class="header-tag-line">
+							<h1>News 24 - Zawsze aktualne wiadomości</h1>
+						</div>
+						<div id="mob-nav" class="mob-nav-btn">
+							<div class="mob-nav-1"></div>
+							<div class="mob-nav-2"></div>
+							<div class="mob-nav-3"></div>
+						</div>
+						<nav class="main-nav">
+							<ul class="navbar-nav">
+								<li>
+									<a href="#tech">Technologia</a>
+								</li>
+								<li>
+									<a href="#biz">Biznes</a>
+								</li>
+								<li>
+									<a href="#sci">Nauka</a>
+								</li>
+								<li>
+									<a href="#spo">Sport</a>
+								</li>
+								<li>
+									<a href="#con">Kontakt</a>
+								</li>
+								<li>
+									<a href="direction">Przełącz na "rtl"</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="row">
+			<div class="container row">
+				<main class="main-block">
+					<section id="tech" class="tech-section">
+						<h1 class="section-title">Technologia</h1>
+						<select class="select-content" id="tech-sources">
+							<option>Wybierz źródło</option>
+						</select>
+						<div id="section-tech" class="section-content"></div>
+					</section>
+					<section id="biz" class="biz-section">
+						<h1 class="section-title">Biznes</h1>
+						<select class="" id="biz-sources">
+							<option>Wybierz źródło</option>
+						</select>
+						<div id="section-biz" class="section-content">
+						</div>
+					</section>
+					<section id="sci" class="sci-section">
+						<h1 class="section-title">Nauka</h1>
+						<select class="" id="sci-sources">
+							<option>Wybierz źródło</option>
+						</select>
+						<div id="section-sci" class="section-content"></div>
+					</section>
+					<section id="spo" class="spo-section">
+						<h1 class="section-title">Sport</h1>
+						<select class="" id="spo-sources">
+							<option>Wybierz źródło</option>
+						</select>
+						<div id="section-spo" class="section-content"></div>
+					</section>
+				</main>
+				<aside class="right-block">
+					<div class="side-container">
+						<h1 class="side-main-heading">Popularne w:</h1>
+						<section id="pop-tech" class="popular-art">
+							<h2 class="side-heading">Technologia</h2>
+							<article id="tech-side-art" class="pop-art"></article>
+							<hr class="aside-divider">
+						</section>
+						<section id="pop-biz" class="popular-art">
+							<h2 class="side-heading">Biznes</h2>
+							<article id="biz-side-art" class="pop-art"></article>
+							<hr class="aside-divider">
+						</section>
+						<section id="pop-sci" class="popular-art">
+							<h2 class="side-heading">Nauka</h2>
+							<article id="sci-side-art" class="pop-art"></article>
+							<hr class="aside-divider">
+						</section>
+						<section id="pop-spo" class="popular-art">
+							<h2 class="side-heading">Sport</h2>
+							<article id="spo-side-art" class="pop-art"></article>
+						</section>
+					</div>
+				</aside>
+			</div>
+		</div>
+<footer id="con" class="footer">
+	<div class="container">
+		<div class="row">
+				<div class="address-block">
+						<h1 class="footer-adr-heading">Kontakt</h1>
+						<address class="footer-adr">
+								<ul>
+										<li>news 24</li>
+										<li>ul. Jana Kowalskiego 13</li>
+										<li>00-000 Opole</li>
+										<li>
+												<a href="tel:+48000000000">+48 000 000 000</a>
+										</li>
+										<li>
+												<a href="mailto:kontakt@news24.pl">kontakt@news24.pl</a>
+										</li>
+								</ul>
+						</address>
+				</div>
+				<div class="footer-nav">
+						<h1 class="footer-nav-heading">Nasze serwisy</h1>
+						<ul class="footer-menu">
+								<li><a href="#top">Start</a></li>
+								<li><a href="#tech">Technologia</a></li>
+								<li><a href="#biz">Biznes</a></li>
+								<li><a href="#sci">Nauka</a></li>
+								<li><a href="#spo">Sport</a></li>
+						</ul>
+				</div>
+		</div>
+		<div class="row">
+				<div class="footer-copy">
+						<p>Wszelkie prawa zastrzeżone news24 - <span id="f-date"></span></p>
+				</div>
+		</div>
+			</div>
+</footer>
+</body>
+</html>
