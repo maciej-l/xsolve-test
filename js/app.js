@@ -3,7 +3,7 @@
 var techArtId = [],
 	bizArtId = [],
 	sciArtId = [],
-	spoArtId = [],
+	spoArtId = [];
 // +++ +++ +++ ++++ Sources config +++ +++ +++
 	newsSources = [
 		{
@@ -136,7 +136,7 @@ var techArtId = [],
 			insertSpoArticle(response);
 		});
 	}
-// +++ getting losowych artykułów Tech data
+// +++ getting artocles from Tech
 	function printTechData(data) {
 		var d = getTechArticles(),
 			sideTechArt = $('#tech-side-art');
@@ -145,12 +145,11 @@ var techArtId = [],
 				techArtId.push(val.id);
 		});
 		}).then(function() {
-			//var r = Math.floor((Math.random() * 10 ) + 1);
 				sideTechArt.empty();
 				getTechData(techArtId[0]);
 		});
 	}
-// +++ getting losowych artykułów Biz data
+// +++ getting artocles from Biz
 	function printBizData(data) {
 		var d = getBizArticles(),
 			sideBizArt = $('#biz-side-art');
@@ -163,7 +162,7 @@ var techArtId = [],
 				getBizData(bizArtId[0]);
 		});
 	}
-// +++ pobieranie losowych artykułów Sci data
+// +++ getting artocles from Sci
 	function printSciData(data) {
 		var d = getSciArticles(),
 			sideSciArt = $('#sci-side-art');
@@ -172,12 +171,11 @@ var techArtId = [],
 				sciArtId.push(val.id);
 		});
 		}).then(function() {
-		//	var r = Math.floor((Math.random() * 10 ) + 1);
 				sideSciArt.empty();
 				getSciData(sciArtId[0]);
 		});
 	}
-// +++ pobieranie losowych artykułów Spo data
+// +++ getting artocles from Spo
 	function printSpoData(data) {
 		var d = getSpoArticles(),
 			sideSpoArt = $('#sci-side-art');
@@ -186,7 +184,6 @@ var techArtId = [],
 				spoArtId.push(val.id);
 		});
 		}).then(function() {
-		//	var r = Math.floor((Math.random() * 10 ) + 1);
 				sideSpoArt.empty();
 				getSpoData(spoArtId[0]);
 		});
@@ -272,7 +269,7 @@ var techArtId = [],
 // +++ getting data from selected sources
 	function getSelSourceArt(selectedSource, ele) {
 		$.ajax({
-			url: `https://newsapi.org/v1/articles?source=${selectedSource}&sortBy=top&apiKey=64b0f57dd2e44132b7f1f45b095747ec`,
+			url: `https://newsapi.org/v1/articles?source=${selectedSource}&apiKey=64b0f57dd2e44132b7f1f45b095747ec`,
 			dataType: 'json',
 			type: 'get'
 		}).done(function(response) {
