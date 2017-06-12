@@ -103,7 +103,7 @@ var techArtId = [],
 			dataType: 'json',
 			type: 'get'
 		}).done(function(response) {
-			insertTechArticle(response);
+			insertDataToSideBar(response, newsSources[0].asideArtId);
 		});
 	}
 // +++ getting biz data
@@ -113,7 +113,7 @@ var techArtId = [],
 			dataType: 'json',
 			type: 'get'
 		}).done(function(response) {
-			insertBizArticle(response);
+			insertDataToSideBar(response, newsSources[1].asideArtId);
 		});
 	}
 // +++ getting Sci data
@@ -123,7 +123,7 @@ var techArtId = [],
 			dataType: 'json',
 			type: 'get'
 		}).done(function(response) {
-			insertSciArticle(response);
+			insertDataToSideBar(response, newsSources[2].asideArtId);
 		});
 	}
 // +++ getting spo data
@@ -133,7 +133,7 @@ var techArtId = [],
 			dataType: 'json',
 			type: 'get'
 		}).done(function(response) {
-			insertSpoArticle(response);
+			insertDataToSideBar(response, newsSources[3].asideArtId);
 		});
 	}
 // +++ getting artocles from Tech
@@ -187,59 +187,20 @@ var techArtId = [],
 				sideSpoArt.empty();
 				getSpoData(spoArtId[0]);
 		});
+	}
+// +++ inserting Data to sidebar 
+	function insertDataToSideBar(response, sourceId){
+		var sideArticleSource = $(sourceId),
+			sideArtLink = $(`<a class=aside-article-link" href="${response.articles[0].url}">`),
+			sideArtImg = $(`<img class="aside-article-img" src="${response.articles[0].urlToImage}">`),
+			sideArtTitle = $(`<h2 class="aside-article-title">${response.articles[0].title}</h2>`),
+			sideArtDesc = $(`<p class="aside-article-content">${response.articles[0].description}</p>`);
+
+			sideArtImg.appendTo(sideArtLink);
+			sideArtTitle.appendTo(sideArtLink);
+			sideArtDesc.appendTo(sideArtLink);
+			sideArtLink.appendTo(sideArticleSource);
 	}	
-// +++ inserting Tech data
-	function insertTechArticle(response) {
-		var sideTechArt = $(newsSources[0].asideArtId),
-			sideTechLink = $(`<a class="aside-article-link" href="${response.articles[0].url}">`),
-			sideTechArtImg = $(`<img class="aside-article-img" src="${response.articles[0].urlToImage}">`),
-			sideTechTitle = $(`<h2 class="aside-article-title">${response.articles[0].title}</h2>`)
-			sideTechDesc = $(`<p class="aside-article-content">${response.articles[0].description}</p>`);
-
-			sideTechArtImg.appendTo(sideTechLink);
-			sideTechTitle.appendTo(sideTechLink);
-			sideTechDesc.appendTo(sideTechLink);
-			sideTechLink.appendTo(sideTechArt);
-	}
-// +++ inserting Biz data
-	function insertBizArticle(response) {
-		var sideTechArt = $(newsSources[1].asideArtId),
-			sideTechLink = $(`<a class="aside-article-link" href="${response.articles[0].url}">`),
-			sideTechArtImg = $(`<img class="aside-article-img" src="${response.articles[0].urlToImage}">`),
-			sideTechTitle = $(`<h2 class="aside-article-title">${response.articles[0].title}</h2>`)
-			sideTechDesc = $(`<p class="aside-article-content">${response.articles[0].description}</p>`);
-
-			sideTechArtImg.appendTo(sideTechLink);
-			sideTechTitle.appendTo(sideTechLink);
-			sideTechDesc.appendTo(sideTechLink);
-			sideTechLink.appendTo(sideTechArt);
-	}
-// +++ inserting Sci data
-	function insertSciArticle(response) {
-		var sideTechArt = $(newsSources[2].asideArtId),
-			sideTechLink = $(`<a class="aside-article-link" href="${response.articles[0].url}">`),
-			sideTechArtImg = $(`<img class="aside-article-img" src="${response.articles[0].urlToImage}">`),
-			sideTechTitle = $(`<h2 class="aside-article-title">${response.articles[0].title}</h2>`)
-			sideTechDesc = $(`<p class="aside-article-content">${response.articles[0].description}</p>`);
-
-			sideTechArtImg.appendTo(sideTechLink);
-			sideTechTitle.appendTo(sideTechLink);
-			sideTechDesc.appendTo(sideTechLink);
-			sideTechLink.appendTo(sideTechArt);
-	}
-// +++ inserting spo data
-	function insertSpoArticle(response) {
-		var sideTechArt = $(newsSources[3].asideArtId),
-			sideTechLink = $(`<a class="aside-article-link" href="${response.articles[0].url}">`),
-			sideTechArtImg = $(`<img class="aside-article-img" src="${response.articles[0].urlToImage}">`),
-			sideTechTitle = $(`<h2 class="aside-article-title">${response.articles[0].title}</h2>`)
-			sideTechDesc = $(`<p class="aside-article-content">${response.articles[0].description}</p>`);
-
-			sideTechArtImg.appendTo(sideTechLink);
-			sideTechTitle.appendTo(sideTechLink);
-			sideTechDesc.appendTo(sideTechLink);
-			sideTechLink.appendTo(sideTechArt);
-	}		
 // +++ getting sources of articles to select
 	function getSources() {
 		newsSources.forEach(function(index, value) {
@@ -254,7 +215,7 @@ var techArtId = [],
 			});
 		});
 	}
-// +++ insertin data to select
+// +++ inserting data to select
 	function loadDataToSelect(response, selectId) {
 		var techSelect = $(`${selectId}`),
 			option = $(`${selectId}`).children();
